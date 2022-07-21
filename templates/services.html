@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our services</title>
+        <!--https://getbootstrap.com/-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<!--for icons in the fontawesome css-->
+    <script src="https://kit.fontawesome.com/f8ca3d18f3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/main.css') }}">
+    <script src="{{ url_for('static', filename = '/js/main.js') }}"></script>
+</head>
+<body>
+{% include 'navbar.html' %}
+<div class="container">
+    <div class="jumbotron">
+        <section class="row">
+            <div class="col-md-6">
+                 <img class="card-img float-right" src="../static/citysprint.jpg" alt="" style="">
+                <div class="card">
+                            <span class="card-body">
+                                <h3 class="bg-dark text-light">Introducing our new Same Day service</h3>
+                                <p>We are pleased to offer <br> our new CitySprint Sa- <br> meDay service. With  <br>this service a courier <br> collects AND delivers  <br>on the SameDay you <br> book.
+                                    The SameDay <br> Delivery service is our <br> most express service  <br>and is perfect for any <br> important documents or parcel that need to be collected AND delivered by a reliable and
+                                    secure service that Same Day. Arranging a reliable and cost effective same day delivery could never be easier,
+                                    either enter your details in the quote box below for a Same Day delivery price. You can also follow the normal booking process to compare Same Day Delivery services against our Next Day offerings.
+
+                                <p>We fully appreciate that when you book a Same Day delivery you want to know that
+                                your parcel will reach its final destination asap without any problems. For this reason we only
+                                work with the most reputable couriers on the market, those with a proven track record of collection and
+                                delivery reliability, together with first class customer satisfaction.</p>
+                                <hr>
+                                <h3 class="bg-dark text-light">Same Day Delivery Vehicle Guidelines</h3>
+                                <p>Depending on the size of your parcel, your document / parcel may be collected by either motorbike,
+                                    small, medium or large van. Our system will determine the most suitable form of transport for your
+                                    item depending on size and weight, so you can be sure you are always offered the most cost effective option.
+                                    For your reference below are the size guidelines which determine what sort of vehicle your item will be collected by.</p>
+                                <div class="card">
+                                    <div class="card-body">
+                                <b>Motorbike - 30cm x 30cm x 30cm</b><br>
+                                <b>Small van - 150cm x 135cm x 105cm</b><br>
+                                <b>Medium van - 220cm x 150cm x 125cm</b><br>
+                                <b>Large van - 310cm x 150cm x 150cm</b><br>
+                                        </div>
+                                    </div>
+                                <br>
+                                <div class="card">
+                                    <div class="card-body">
+                                <p class="text-danger"><b>All of our Same Day deliveries are facilitated by CitySprint who provide quality Same Day person-to-person courier
+                                    services 24 hours a day, 7 days per week, 365 days per year</b>.</p>
+                                    </div>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                       <!--<img class="card-img-top " src="../static/darkii.jpg" alt="" width="80%" style="padding:5px;">-->
+                            <span class="card-body">
+                                <h3 class="bg-dark text-light">Courier Deliveries</h3>
+                                <p>There's no faster, more efficient or more cost-effective way for you to
+                                    send a domestic parcel delivery to anywhere in the Kenya than through parcelDelivery.com</p>
+                                <p>With over two and a half decades of national delivery experience behind us our courier services comparison and booking website,
+                                    you can be assured that speed, price, reliability and security are our priorities as well as yours.</p>
+                               <div class="card">
+                                   <div class="card-body">
+                                        <h3 class="bg-danger text-light">Next Day Domestic Parcel Delivery</h3>
+                                        <p><b>Delivery time:- &nbsp </b>Will arrive the next day.</p>
+                                        <p>Next day domestic parcel delivery means that your consignment will arrive at its destination by 5.30pm the day after it is collected.
+                                            Track your parcel all the way with Parcel's Delivery real-time tracking for extra peace of mind.
+                                            </p>
+                                        <p><b>Minimum Collection: &nbsp</b> Typically at least 3 hours notice prior to collection is required, though this varies according
+                                            to collection postcode.</p>
+                                        <p><b>Cut-off time for same day collection: &nbsp</b>The cut-off time for same day collection is dependent on your collection postcode.
+                                            Our systems will calculate whether a same day collection is possible for your postcode. As a 'guide' urban / city-centre areas typically
+                                            have a later cut-off time than more remote / rural postcodes.
+                                            Economy Domestic Parcel Delivery</p>
+                                       </div>
+                                   </div>
+                                <br>
+                                <div class="card">
+                                   <div class="card-body">
+                                       <h3 class="bg-danger text-light">Economy Domestic Parcel Delivery</h3>
+                                       <p><b>Delivery:- &nbsp</b>Will arrive within 2 working days.</p>
+                                       <p>Economy domestic parcel delivery is exactly what it sounds like, a service designed for less urgent deliveries offered at a lower cost.
+                                           While all your deliveries are important, not every one is a huge rush. Our economy parcel delivery options are highly economical yet reliable,
+                                           typically arriving within 2 business days. Track your parcel all the way with Rapid Parcel's real-time tracking for extra piece of mind.</p>
+                                       <p><b>Collection: &nbsp</b>Typically at least 3 hours notice prior to collection is required, though this varies according to collection postcode.</p>
+                                   </div>
+                                </div>
+                                    </span>
+
+                </div>
+
+            </div>
+        </section>
+    </div>
+</div>
+{% include 'footer.html' %}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+</body>
+</html>

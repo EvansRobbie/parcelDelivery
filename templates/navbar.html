@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Navbar</title>
+    <!--https://getbootstrap.com/-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<!--for icons in the fontawesome css-->
+    <script src="https://kit.fontawesome.com/f8ca3d18f3.js" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<!--https://codepen.io/gota/pen/ZVKMLz-->
+    <style>
+        .dropdown:hover>.dropdown-menu{display:block;
+        }
+        .dropdown>.dropdown-toggle:active {
+              /*Without this, clicking will make it sticky*/
+                // pointer-events: none;
+            }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <section class="row">
+        <div class="col-md-4">
+            <img src="../static/logo1.png" alt="" class="img-fluid" width="150" style="padding-top:20px;" >
+        </div>
+        <div class="col-md-4">
+            <form class="form-inline my-2 my-lg-0" style="padding-top:20px;">
+                  <input class="form-control" type="text" placeholder="OrderNo." aria-label="Search">
+                  <button class="btn btn-danger " type="submit">TrackOrder</button>
+                </form>
+        </div>
+        <div class="col-md-4" style="padding-top:20px;" >
+            <a href="">
+                <i class="fab fa-shopping-cart"></i>
+            </a>
+        </div>
+
+    </section>
+
+</div>
+<br>
+       <section class="row bg-danger" style="padding-top:1%;padding-left:1%;padding-right:1%;">
+         <div class="col-md-12">
+             <nav class="navbar navbar-expand-md navbar-grey bg-dark">
+              <button class="navbar-toggler bg-danger" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon bg-light"></span>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link text-light" href="/">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-light" href="/"
+                    id="navbardrop1" data-toggle="dropdown">Get Quote</a>
+                      <div class="dropdown-menu">
+                          <a href="/courier" class="dropdown-item">Courier Delivery</a>
+                          <a href="/parcel" class="dropdown-item">Same Day Delivery</a>
+                      </div>
+                  </li>
+                    <li class="nav-item">
+                    <a class="nav-link text-light" href="/services">Our Services</a>
+                  </li>
+                    <li class="nav-item">
+                    <a class="nav-link text-light" href="/track">Online Tracking</a>
+                  </li>
+                    <li class="nav-item">
+                    <a class="nav-link text-light" href="">Help & Advice</a>
+                  </li>
+                    <li class="nav-item">
+                    <a class="nav-link text-light" href="/contact">Contact Us</a>
+                  </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+                </form>
+
+<!--https://www.ordinarycoders.com/user-login-logout-->
+                <!--create a session. if the user is in session show the the username or email and the logout and if the user
+                is not in session the it will have to show the login and the logout modal-->
+             {% if session.user %}
+                <!--Logout Modal-->
+                <a class="text-danger" href="/index" data-toggle="modal" data-target="#logoutModal"> Logout</a>
+                <a class="btn btn-sm btn-outline-primary m-2"  href="">{{session.user}}</a>
+                 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                            <div class="modal-footer">
+                              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                              <a class="btn btn-primary" href="/logout">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                      </div>
+                         {% else %}
+                            <!--Login Modal-->
+                    <a class="text-light btn btn-sm btn-danger m-2" >Login</a>
+                        <div class="modal fade" id="loginModal3" tabindex="-1" role="dialog" aria-labelledby="loginModal3Label" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="loginModal3Label">Login</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                              </div>
+                                <div class="modal-body">
+                                <form action="/action" method="post">
+                                    <input type="text" name="customer_username" placeholder="Your Username" class="form-control">
+                                    <br>
+                                    <input type="password" name="password" placeholder="Your Password" class="form-control">
+                                    <br>
+                                    <br>
+                                    <a href="">Don't have an account? Create</a><br>
+                                    <a href="">Forgot Password?</a>
+                                    <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                 <input type="submit" value="login" class="btn btn-success">
+                              </div>
+                                  </form>
+                                </div>
+                           </div>
+                        </div>
+                    </div>
+                    <!--Register Modal-->
+                 <a class="btn btn-sm btn-danger m-2" data-toggle="modal" data-target="#exampleModal3" href="/index">Register</a>
+                    <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                             <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModal3Label">Register</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                                  <div class="modal-body">
+                                       <form action="/action1" method="post">
+                                            <input type="text" name="customer_fname" placeholder="Your First Name" class="form-control" required>
+                                            <br>
+                                            <input type="text" name="customer_lname" placeholder="your last Name" class="form-control" required>
+                                            <br>
+                                            <input type="text" name="customer_username" placeholder="Your Username" class="form-control" required>
+                                            <br>
+                                            <input type="tel" name="customer_phone" placeholder="Your Phone No." class="form-control" required>
+                                            <br>
+                                            <input type="email" name="customer_email" placeholder="Your Email" class="form-control" required>
+                                            <br>
+                                            <input type="password" name="customer_password" placeholder="Your Password" class="form-control" required>
+                                            <br>
+                                            <input type="password" name="customer_password2" placeholder="Confirm your Password" class="form-control" required>
+                                            <br>
+                                            <label for="">Gender</label><br>
+                                            <input type="radio" name="customer_gender" checked>Male
+                                            <input type="radio" name="customer_gender">Female
+                                            <br>
+                                            <label for="">Your Address</label><br>
+                                            <textarea name="customer_address" id="" cols="40" rows="2" required></textarea><br>
+                                            <br>
+                                              <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <input type="submit" value="Register" class="btn btn-success">
+                                              </div>
+                                            </form>
+                                            </div>
+                                          </div>
+                                        </div>
+                                         {% endif %}
+                    </div>
+              </div>
+                    </nav>
+         </div>
+
+
+                </section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard</title>
+       <!--https://getbootstrap.com/-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<!--for icons in the fontawesome css-->
+    <script src="https://kit.fontawesome.com/f8ca3d18f3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+{% include 'sidebar.html' %}
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages%}
+                    <div class="alert alert-success alert-dismissible " role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{message}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <section class="row">
+            <div class="col-md-4">
+                <div class="card bg-dark">
+                    <div class="card-body">
+                        <a class="bg-danger" href="">
+                            <i class="glyphicon glyphicon-home bg-light text-danger" style="font-size:80px;"></i>
+                            <h3 class="text-light" style="float:right;font-size:30px;">In Storage</h3>
+                            {% for row in rows %}
+                            <h3 class="text-light" style="float:right;font-size:30px;">{{row[1]}}</h3>
+                            {% endfor %}
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-dark">
+                    <div class="card-body">
+                         <a class="bg-danger" href="">
+                            <i class="glyphicon glyphicon-road bg-light text-danger" style="font-size:80px;"></i>
+                             <h3 class="text-light" style="float:right;font-size:30px;">In Transit</h3>
+                             {% for row in rows %}
+                             <h3 class="text-light" style="float:right;font-size:30px;">{{row[2]}}</h3>
+                             {% endfor %}
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card bg-dark">
+                    <div class="card-body">
+
+                         <a class="bg-danger" href="">
+                            <i class="glyphicon glyphicon-remove-circle bg-light text-danger" style="font-size:80px;"></i>
+                            <h3 class="text-light" style="float:right;font-size:30px;">Not Collected</h3>
+                             {% for row in rows %}
+                             <h3 class="text-light" style="float:right;font-size:30px;">{{row[3]}}</h3>
+                             {% endfor %}
+                        </a>
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+<br>
+  <section class="row">
+
+            <div class="col-md-4">
+                <div class="card bg-dark">
+                    <div class="card-body">
+                        <a class="bg-danger" href="">
+                            <i class="glyphicon glyphicon-ok-circle" style="font-size:80px;"></i>
+                            <h3 class="text-light" style="float:right;font-size:30px;">Delivered</h3>
+                            {% for row in rows %}
+                            <h3 class="text-light" style="float:right;font-size:30px;">{{row[4]}}</h3>
+                            {% endfor %}
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+    </div>
+  </section>
+</body>
+</html>

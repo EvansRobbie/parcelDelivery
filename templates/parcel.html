@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Parcel</title>
+        <!--https://getbootstrap.com/-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<!--for icons in the fontawesome css-->
+    <script src="https://kit.fontawesome.com/f8ca3d18f3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.js') }}">
+</head>
+<body>
+{% include 'navbar.html' %}
+<div class="container">
+    <div class="jumbotron">
+        <section class="row">
+            <div class="col-md-8">
+                <div class="card">
+                        <img class="card-img-top " src="../static/darkie1.jpg" alt="" width="90%" style="padding:5px;">
+                        <div class="card-img-overlay">
+                            <span class="card-text">
+                                <form action="/parcel" method="post">
+                                    <label for="collect"class="text-light"><b>Collection Address:</b></label>
+                                    <input type="text" name="collection_address" placeholder="Nairobi" class="form-control" required><br>
+                                    <label for="Delivery:" class="text-light"><b>Delivery Address:</b></label>
+                                    <input type="text" name="delivery_address" placeholder="Delivery location" class="form-control" required><br>
+                                    <input type="hidden" name="order_status" value="In storage"  required >
+                                    <hr class="m-2"><br><br><br><br><br>
+                             <div class="col-md-12  text-right">
+                                  <b class="text-danger"> {{success}}</b>
+                                <b class="text-danger">{{error}}</b>
+                                <button class="btn btn-danger btn-lg" type="submit">Quote Me Now</button>
+                             </div>
+                                </form>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="../static/same.png" alt="" class="bg-img " width="90%" >
+                    </div>
+                </div>
+             <div class="card">
+                    <span class="card-text" style="float:right; padding:5px; font-size:12px;">
+                <h6><b class="text-danger">Same Day</b> - the perfect service for urgent deliveries:</h6><br>
+                        <ul>
+                            <i class="fa fa-angle-double-right text-danger"></i>&nbsp;<b>Fastest service</b><br>
+                            <i class="fa fa-angle-double-right text-danger"></i>&nbsp;<b>Item delivered direct to destination</b><br>
+                            <i class="fa fa-angle-double-right text-danger"></i>&nbsp;<b>24/7, 365 days a year service</b><br>
+                            <i class="fa fa-angle-double-right text-danger"></i>&nbsp;<b>For Urgent & Time Critical deliveries</b><br>
+                            <i class="fa fa-angle-double-right text-danger"></i>&nbsp;<b>Collection & Delivery on the Same Day</b><br>
+
+                        </ul>
+                </span>
+                    </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% include 'footer.html' %}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+</body>
+</html>

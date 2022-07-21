@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>SideBar</title>
+
+
+         <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+          <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.js') }}">
+        <!-- Our Custom CSS -->
+    </head>
+<body>
+
+        <div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar" class="bg-dark">
+                 <div class="sidebar-header bg-danger">
+                    <h3>Parcel Delivery</h3>
+                    <strong>PD</strong>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <li class="active bg-light">
+                        <a class="bg-danger" href="/dashboard">
+                            <i class="glyphicon glyphicon-dashboard bg-dark"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a class="text-danger" href="/customer">
+                            <i class="glyphicon glyphicon-briefcase text-danger"></i>
+                            Customers
+                        </a>
+                        <a class="text-danger" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+                            <i class="glyphicon glyphicon-duplicate"></i>
+                            Parcels
+                        </a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li><a class="text-danger" href="/same">sameDay Parcels</a></li>
+                            <li><a class="text-danger" href="/order">Courier</a></li>
+                            <li><a class="text-danger" href="#">Page 3</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="text-danger" href="#">
+                            <i class="glyphicon glyphicon-link"></i>
+                            Portfolio
+                        </a>
+                    </li>
+                    <li>
+                        <a class="text-danger"href="#">
+                            <i class="glyphicon glyphicon-paperclip"></i>
+                            FAQ
+                        </a>
+                    </li>
+                    <li>
+                        <a class="text-danger" href="#">
+                            <i class="glyphicon glyphicon-send"></i>
+                            Contact
+                        </a>
+                    </li>
+                    <li>
+                             {% if session.admin %}
+                <!--Logout Modal-->
+                <a class="text-danger" href="/logout" data-toggle="modal" data-target="#logoutModal"> Logout</a>
+                <a class="btn btn-sm btn-outline-primary m-2"  href=" ">{{session.admin}}</a>
+                 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                            <div class="modal-footer">
+                              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                              <a class="btn btn-primary" href="/adminlogout">Logout</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                         {% else %}
+                            <!--Login Modal-->
+                    <a class="text-light btn btn-sm btn-danger m-2" data-toggle="modal" data-target="#loginModal3" href="/index">Login</a>
+                        <div class="modal fade" id="loginModal3" tabindex="-1" role="dialog" aria-labelledby="loginModal3Label" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="loginModal3Label">Login</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                              </div>
+                                <div class="modal-body">
+                                <form action="admin" method="post">
+                                    <input type="email" name="admin_email" placeholder="Your Email" class="form-control">
+                                    <br>
+                                    <input type="password" name="admin_password" placeholder="Your Password" class="form-control">
+                                    <br>
+                                    <br>
+                                    <a href="">Don't have an account? Create</a><br>
+                                    <a href="">Forgot Password?</a>
+                                    <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                 <input type="submit" value="login" class="btn btn-success">
+                              </div>
+                                  </form>
+                                </div>
+                           </div>
+                        </div>
+                    </div>
+
+                 {% endif %}
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="list-unstyled CTAs">
+                </ul>
+            </nav>
+
+            <!-- Page Content Holder -->
+        <div id="content">
+
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="btn btn-danger navbar-btn">
+                                <i class="glyphicon glyphicon-align-left"></i>
+                                <span>Toggle Sidebar</span>
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+
+
+
+
+
+
+
+
+        <!-- jQuery CDN -->
+         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+         <!-- Bootstrap Js CDN -->
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+         <script type="text/javascript">
+             $(document).ready(function () {
+                 $('#sidebarCollapse').on('click', function () {
+                     $('#sidebar').toggleClass('active');
+                 });
+             });
+         </script>
+    </body>
+</html>

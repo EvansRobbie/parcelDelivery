@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Track Parcel</title>
+        <!--https://getbootstrap.com/-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<!--for icons in the fontawesome css-->
+    <script src="https://kit.fontawesome.com/f8ca3d18f3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.js') }}">
+</head>
+<body>
+{% include 'navbar.html' %}
+    <div class="container">
+        <div class="jumbotron">
+            <section class="row">
+                <div class="col-md-8">
+                    <div class="card text-white bg-dark">
+                        <div class="card-body">
+                            <form action="/track" method = "post">
+                                <input type="text" name="parceltrack_id" placeholder="Your track Parcel ID" required class="form-control"><br>
+                                <input type="submit" value="Track Parcel" type="button" class="btn btn-danger" id="toggleVisibilityButton">
+                                <!--a href="/track" class="btn btn-danger" value="Track Parcel" type="button" id="toggleVisibilityButton">Track Parcel</a-->
+                            </form>
+                                <hr class="text-light">
+                            {% if session.user %}
+                            <table class="table table-hover text-light" id="displaytable">
+                              <thead>
+                                <tr>
+                                  <th>#</th>
+                                  <th class="text-light">ParcelTrack ID</th>
+                                  <th class="text-light">Delivery Address</th>
+                                    <th class="text-light">Order Status</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                              <b class="text-danger">{{error}}</b>
+                              {% for row in rows %}
+                                <tr>
+                                  <th scope="row">1</th>
+                                  <td class="text-light">{{row[0]}}</td>
+                                  <td class="text-light">{{row[3]}}</td>
+                                    <td class="text-light">{{row[10]}}</td>
+                                </tr>
+                              {% endfor %}
+                              </tbody>
+                            </table>
+                            {% else %}
+                            <b class="text-light">Login to track your Parcel</b>
+                            {% endif %}
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+{% include 'footer.html' %}
+<script>
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
+        <!--https://getbootstrap.com/-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<!--for icons in the fontawesome css-->
+    <script src="https://kit.fontawesome.com/f8ca3d18f3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <script src="{{ url_for('static', filename='css/main.css') }}"></script>
+</head>
+<body>
+{% include 'navbar.html' %}
+    <div class="container">
+        <div class="jumbotron">
+            <section class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="jumbotron">
+
+                                <p><b>At Parcel Delivery we focus on using the latest technology to bring out the best Experience.
+                                </b></p>
+                                <p><b>Our main aim is to be within easy reach of our customers whenever they require our assistance
+                                    for quick and fast feedback.</b>
+                                </p>
+
+                            </div>
+                            <div id="tabs">
+                              <ul>
+                                <li><b><a href="#tabs-1" class="text-danger">Get in Touch</a></b>
+                                    <i class="fa fa-comments" aria-hidden="true" style="font-size:40px;"></i>
+                                </li>
+                                <li><b><a href="#tabs-2">Non-collection</a></b>
+                                <i class="fa fa-ban" aria-hidden="true" style="font-size:40px;"></i>
+                                </li>
+                                <li><b><a href="#tabs-3">Non-delivery</a></b>
+                                    <i class="fa fa-cart-plus" aria-hidden="true" style="font-size:40px;"></i>
+                                </li>
+                                  <li><b><a href="#tabs-4">Submit Claim</a></b>
+                                      <i class="fa fa-check-square-o" aria-hidden="true" style="font-size:40px;"></i>
+                                  </li>
+                              </ul>
+                                <br>
+                                <div class="card">
+                                    <div class="card-body">
+                              <div id="tabs-1">
+                                <h3 class="text-danger"><strong><b>Get in touch.</b></strong></h3>
+                                <p>At parcel Delivery our focus is using technology to provide you with the best experience.
+                                    We always aim to be within easy reach of our customers and want to make sure you get the answers you want
+                                     quickly and easily..</p>
+                                  <p>
+                                      We have a detailed and comprehensive Help & advice section. If you cannot find the answer or advice you are looking for there ,
+                                      you can use our enquiry form below for a prompt response.
+                                  </p>
+
+                                  <h3 class="text-light bg-dark" ><b>Enquiry form</b>
+                                  <i class="fa fa-commenting-o text-danger" aria-hidden="true" ></i>
+                                  </h3>
+                                  <p>please fill in the details</p>
+                                  <form action="" method="post">
+                                 <section class="row">
+                                     <div class="col-md-4">
+                                      <input type="text" name="title" placeholder="Title"  class="form-control" required><br>
+                                      <input type="text" name="customer_name" placeholder="Your Name" class="form-control" required><br>
+                                      <input type="text" name="username" placeholder="Your Username"  class="form-control" required><br>
+                                      <input type="email" name="email" placeholder="Your Email"  class="form-control" required><br>
+                                      <input type="email" name="email" placeholder="Confirm your Email"  class="form-control" required><br>
+                                      <input type="text" name="phone" placeholder="TYour phone number"  class="form-control" required><br>
+                                     </div>
+                                        <div class="col-md-8">
+                                            <select name="enquiry" id="enquiry" class="form-control">
+                                              <option value="General Enquiry">1.General Enquiry</option>
+                                              <option value="Delivery Issue">2.Delivery Issue</option>
+                                              <option value="Cancel Yor Collection">3.Cancel Yor Collection</option>
+                                              <option value="Collection Issue">4.Collection Issue</option>
+                                                <option value="Problem Ordering">5.Problem Ordering</option>
+                                                <option value="Website Help">6.Website Help</option>
+                                                <option value="Claims">7.Claims</option>
+                                                <option value="Custom Query">8.Custom Query</option>
+                                                <option value="Leave feedback">9.Leave feedback</option>
+
+                                            </select>
+                                            <br>
+                                            <textarea name="message" placeholder="Your message" id="" cols="30" rows="4" class="form-control" required></textarea> <br>
+                                            <input type="submit" value="Send Enquiry" class="btn btn-danger">
+
+                                     </div>
+                                     </section>
+                                    </form>
+                                  <hr class="m-2">
+                                  <section class="row">
+                                      <div class="col-md-3">
+                                          <h4 class="text-light" style="background:grey;text-align:center;"><i class="fa fa-phone-square" aria-hidden="true">
+                                          </i>&nbsp Phone</h4>
+                                          <p>If you would prefer to speak to us by phone:</p>
+                                          <h3>0704563123</h3>
+                                          <p>Phone lines are open Weekdays 9-5 pm</p>
+
+                                      </div>
+                                      <div class="col-md-3">
+                                          <h4 class="text-light" style="background:grey;text-align:center;"><img src="../static/email.png" alt="" width="13%" style="color:#ffffff">
+                                          &nbsp Email</h4>
+                                          <p>If you would like to email us direct:</p>
+                                           <p class="text-info"> customersupport@smartparcel.com</p>
+                                      </div>
+                                       <div class="col-md-3">
+                                          <h4 class="text-light" style="background:grey;text-align:center;"><i class="fa fa-briefcase" aria-hidden="true"></i>
+                                          &nbsp Business Desk</h4>
+                                          <p>Business customers please call your designated account executive.:</p>
+                                           <p class="text-info"> customersupport@smartparcel.com</p>
+                                      </div>
+                                       <div class="col-md-3">
+                                          <h4 class="text-light" style="background:grey;text-align:center;font-size:20px;"><i class="fa fa-map-marker" aria-hidden="true"></i>
+                                          &nbsp Company Address</h4>
+                                           <p class="text-info"> 2nd Floor Havens court, Waiyaki way</p>
+                                      </div>
+
+                                  </section>
+                              </div>
+                             <div class="card">
+                                 <div class="card-body">
+                                    <div id="tabs-2">
+                                    <h3 class="text-danger"><strong>Parcel not collected</strong></h3>
+                                    <p>In the unlikely situation that your parcels have not been collected and it is after 18.00 on the scheduled day of collection you can reschedule a collection.
+                                        Rescheduling automatically re-books collections for the next working day. Collections occur at anytime between 08:30 and 18:30. Unfortunately we cannot provide you with a specific collection
+                                        time nor advise when the courier will arrive on the day of collection. Please therefore ensure someone is at the premises between these hours to hand the parcel(s) to the driver.</p>
+                                        <form action="" method="post">
+                                        <label for="">Enter your parcel Reference Number:</label>
+                                        <input type="text" name="reference" required>
+                                        <input type="submit" value="Track" class="btn btn-danger">
+                                            </form>
+                                    </div>
+                                 </div>
+                             </div>
+                                <div class="card">
+                                 <div class="card-body">
+                                  <div id="tabs-3">
+                                    <h3 class="text-danger"><strong>Parcel no delivered?</strong></h3>
+                                      <p><b>Delivery Assistance</b></p>
+                                    <p>Typically our customers do not experience any problems with their parcel delivery.
+                                        However, it is possible on some rare occasions that the package is not delivered due to unforeseen circumstances, including:</p>
+                                        <ul>
+                                            <li>
+                                                Traffic Issues: these include, congestion, road closure, traffic accidents which necessitate courier taking a longer route.
+                                            </li>
+                                            <li>
+                                                Adverse weather conditions which can force the courier to change their usual route
+                                            </li>
+                                        </ul>
+                                      <p><b>Check online tracking</b></p>
+                                      <p><b>Request Trace</b></p>
+                                      <p>If the tracking service has not been updated for 48 hours and you have not received your parcel,
+                                          you may request a trace from our Customer Service Team.</p>
+                                         <form action="" method="post">
+                                        <label for="">Enter your parcel Reference Number:</label>
+                                        <input type="text" name="reference" required>
+                                        <input type="submit" value="Track" class="btn btn-danger">
+                                            </form>
+                                  </div>
+                                 </div>
+                                </div>
+                                     <div id="tabs-4">
+                                    <p><strong>Click this tab again to close the content pane.</strong></p>
+                                    <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+                                  </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </section>
+            </div>
+
+        </div>
+{% include 'footer.html' %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+</body>
+</html>

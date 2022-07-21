@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer</title>
+        <!--https://getbootstrap.com/-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<!--for icons in the fontawesome css-->
+    <script src="https://kit.fontawesome.com/f8ca3d18f3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+{% include 'sidebar.html' %}
+<div class="jumbotron p-3">
+    <h2>Manage <b>Customers <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modalinsert">Add new Customer</button></b></h2>
+</div>
+    {% with messages = get_flashed_messages() %}
+
+    {%if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success alert-dismissible " role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            {{message}}
+        </div>
+
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+<div class="card bg-dark text-light">
+    <div class="card-body">
+                 <div class="container">
+                        <table class="table table-hover text-light" id="displaytable">
+                              <thead>
+                                <tr>
+                                  <th>#</th>
+                                  <th >ID</th>
+                                  <th >Username</th>
+                                    <th>Names</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                              {{row}}
+                              {% for row in rows %}
+                                <tr>
+                                  <th scope="row"></th>
+                                  <td>{{row[0]}}</td>
+                                  <td>{{row[3]}}</td>
+                                    <td>{{row[2]}} {{row[1]}}</td>
+                                    <td>{{row[4]}}</td>
+                                    <td>{{row[7]}}</td>
+                                    <td>{{row[8]}}</td>
+                                    <td><a href="/customer_del/{{row[0]}}" onclick="return confirm('Are you sure?');">
+                                        <i class="fas fa-trash-alt text-danger"></i>
+                                        </a></td>
+                                     <td><a href="/customer_update/{{row[0]}}">
+                                        <i class="fas fa-edit text-danger"></i>
+                                        </a></td>
+                                </tr>
+                              <b class="text-danger">{{msg}}</b>
+                              </tbody>
+                        <!--Edit modal-->
+                            <div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title text-danger" id="exampleModalLabel">Modal Update</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">×</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <form action="/customer_update/<customer_id>" method="post">
+                                        <input type="text" name="customer_fname" placeholder="customer First Name" class="form-control" required value="{{row[1]}}">
+                                        <br>
+                                        <input type="text" name="customer_lname" placeholder="Customer last Name" class="form-control" required value="{{row[2]}}">
+                                        <br>
+                                        <input type="text" name="customer_username" placeholder="customer Username" class="form-control" required value="{{row[3]}}">
+                                        <br>
+                                        <input type="tel" name="customer_phone" placeholder="customer Phone No." class="form-control" required value="{{row[7]}}">
+                                        <br>
+                                        <input type="email" name="customer_email" placeholder="customer Email" class="form-control" required value="{{row[4]}}">
+                                        <br>
+                                        <input type="password" name="customer_password" placeholder="customer Password" class="form-control" required value="{{row[5]}}">
+                                        <br>
+                                        <label for="">Gender</label><br>
+                                        <input type="radio" name="customer_gender" value="{{row[6]}}">Male
+                                        <input type="radio" name="customer_gender" value="{{row[6]}}">Female
+                                        <br>
+                                        <label for="">Your Address</label><br>
+                                        <textarea name="customer_address"  cols="40" rows="2" placeholder="customer Address" required value="{{row[9]}}"></textarea><br>
+                                        <br>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <input type="submit" value="New Customer" class="btn btn-success">
+                                          </div>
+
+                                      </form>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
+                            </table>
+                     </div>
+        </div>
+<!--Modal insert customer-->
+<div class="modal fade" id="modalinsert" tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModal3Label">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form action="/insert" method="post">
+            <input type="text" name="customer_fname" placeholder="customer First Name" class="form-control" required>
+            <br>
+            <input type="text" name="customer_lname" placeholder="Customer last Name" class="form-control" required>
+            <br>
+            <input type="text" name="customer_username" placeholder="customer Username" class="form-control" required>
+            <br>
+            <input type="tel" name="customer_phone" placeholder="customer Phone No." class="form-control" required>
+            <br>
+            <input type="email" name="customer_email" placeholder="customer Email" class="form-control" required>
+            <br>
+            <input type="password" name="customer_password" placeholder="customer Password" class="form-control" required>
+            <br>
+            <label for="">Gender</label><br>
+            <input type="radio" name="customer_gender" checked>Male
+            <input type="radio" name="customer_gender">Female
+            <br>
+            <label for="">Your Address</label><br>
+            <textarea name="customer_address" id="" cols="40" rows="2" placeholder="customer Address" required></textarea><br>
+            <br>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <input type="submit" value="New Customer" class="btn btn-success">
+              </div>
+
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

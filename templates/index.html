@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>ParcelDelivery</title>
+
+    <!--https://getbootstrap.com/-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<!--for icons in the fontawesome css-->
+    <script src="https://kit.fontawesome.com/f8ca3d18f3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.js') }}">
+</head>
+<body>
+  {% include 'navbar.html' %}
+<div class="container">
+    <div class="jumbotron">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-danger alert-dismissible " role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{message}}
+                    </div>
+
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <section class="row">
+            <div class="col-md-8">
+                <div class="card">
+                        <img class="card-img-top " src="../static/darkie1.jpg" alt="" width="90%" style="padding:5px;">
+                        <div class="card-img-overlay">
+                            <span class="card-text">
+                                <form action="/courier" method="post">
+                                    <label for="from"class="text-light"><b>From:</b></label>
+                                    <input type="text" name="collection_address" placeholder="Nairobi" required>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="Tel:" class="text-light"><b>Telephone No:</b></label>
+                                    <input type="text" name="sender_phone" placeholder="Enter senders phone number">
+                                    <br><br>
+                                    <label for="To" class="text-light"><b>To:</b></label> &nbsp;&nbsp;&nbsp;
+                                    <input type="text" name="delivery_address" placeholder="within Nairobi and Up Country" required>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="Tel" class="text-light"><b>Telephone No:</b></label>
+                                    <input type="text" name="reciever_phone" placeholder="Enter Reciever's phone number">
+                            <br><br>
+                            <h3><b class="text-danger">Your Package Details</b></h3>
+                            <hr>
+                            <div class="form-group">
+                            <label for="weight"><b class="text-light">Weight</b></label>&nbsp;&nbsp;
+                            <input type="text" name="weight" placeholder="KG"  size="1" required>&nbsp;&nbsp;
+                            <label for="length"><b class="text-light">Length</b></label>&nbsp;&nbsp;
+                            <input type="text" name="length" placeholder="CM"  size="1" required>&nbsp;&nbsp;
+                            <label for="width"><b class="text-light">Width</b></label>&nbsp;&nbsp;
+                            <input type="text" name="width" placeholder="CM"  size="1" required>&nbsp;&nbsp;
+                            <label for="height"><b class="text-light">Height</b></label>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="text" name="height" placeholder="CM"  size="1" required><br>
+                                <input type="hidden" name="order_status" value="In storage"  required >
+                            </div>
+                            <a class="copy-details corners" title="Copy package details" href="#" id="copy_details_1">
+                             <span class="corners">Copy package details</span>
+                            </a>
+                            <a class="add-details corners" title="Add package" href="#" style="display: inline;">
+                            <span class="corners">Add package</span>
+                            </a>
+                            <a class="delete-details corners" title="Delete package" href="#" style="display: inline;">
+                            <span class="corners">Delete details</span>
+                            </a>
+                            <br><br><br><br><br>
+                             <div class="col-md-12  text-right">
+                                <button class="btn btn-danger btn-lg" type="submit">Quote Me Now</button>
+                             </div>
+                                </form>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                       <h2 class="text-muted">Fast,Affordable & Reliable Delivery</h2>
+                        <h4><i class="text-muted">We deliver anywhere within Nairobi</i></h4>
+                        <img src="../static/parcel6.jpg" alt="" class="bg-img " width="90%" >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+        <br>
+    <section class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    {% for new in news %}
+                    <div class="ticker" style="display:flex; flex-wrap:wrap; margin:0 auto;">
+                        <div class="title" style="text-align:center; background:#000000; position:relative;"><h5><b class="text-danger">parcelNews:</b></h5></div>
+                        <div class="news" style="padding:0 2%; width:76%;)">
+                    <marquee bgcolor="#eb3455"
+                        behavior="scroll" direction="left" scrollamount="5">{{new[1]}}</marquee>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+        <br>
+        <section class="row">
+            <div class="col-md-7">
+                <div class="card">
+                    <img class="card-img-top " src="../static/bike.jpg" alt="" width="90%" style="padding:5px;">
+                        <div class="card-img-overlay">
+                                <span class="card-text">
+                        <h3 class="bg-dark text-light" style="padding:10px;"><b>Why Pick Us?</b></h3>
+                                    {{msg}} <br>
+                        {% for row in rows %}
+                        <ul class="text-danger">
+                            <i class="fa fa-angle-double-right text-light"></i>{{row[1]}}
+                        </ul>
+                        {% endfor %}
+                                </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                    <div class="card">
+                    <img class="card-img-top " src="../static/darkie2.jpg" alt="" width="90%" style="padding:5px;">
+                        <div class="card-img-overlay">
+                                <span class="card-text">
+                        <h3 class="bg-dark text-light" style="padding:10px;"><b>We Offer the best courier services</b></h3>
+
+                        <ul class="text-light">
+                            <i class="fa fa-angle-double-right text-danger"></i><b>Quickest delivery service within Nairobi</b> <br>
+                            <i class="fa fa-angle-double-right text-danger"></i><b>Secure person to person delivery</b> <br>
+                            <i class="fa fa-angle-double-right text-danger"></i><b>perfect for urgent items</b> <br>
+                             <i class="fa fa-angle-double-right text-danger"></i><b>Motorbike and Van services</b> <br>
+                            <i class="fa fa-angle-double-right text-danger"></i><b>Available on demand 24/7</b> <br>
+
+
+                        </ul>
+                                </span>
+                    </div>
+                </div>
+                <br>
+                <div class="card">
+                    <span class="card-text" style="float:right; padding:5px; font-size:12px;">
+                 <i class="far fa-clock" style="font-size:40px; color:#000000;"></i>
+                <b class="text-muted">We are open 9.00 AM - 5.00 PM weekdays, 9.00 AM - 12 PM Weekends</b><br>
+                <b class="text-muted">We remain closed on Public Holidays</b><br>
+                <b class="text-success">For better Experience download our app on Google playstore or click
+                    <a href="" class="text-dark">Here</a></b>
+                </span>
+                    </div>
+            </div>
+
+
+
+
+
+        </section><br>
+        <section class="row">
+            <div class="col-md-12">
+                <div class="card" style="padding:5px; text-align:center;">
+                    <span class="card-text" >
+                     <b>We accept</b><br>
+                <i class="fab fa-cc-visa" style="font-size:30px;"></i>
+                <i class="fab fa-cc-paypal" style="font-size:30px;"></i>
+                <i class="fab fa-cc-mastercard" style="font-size:30px;"></i>
+                    </span>
+                </div>
+            </div>
+
+        </section>
+        <br>
+    </div>
+</div>
+{% include 'footer.html' %}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+</body>
+</html>
